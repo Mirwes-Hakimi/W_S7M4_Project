@@ -1,7 +1,9 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import txt from '../i18n/index.json'
 import App from './App'
+
 
 describe('Module 4 Project Tests', () => {
   describe('English Language', () => {
@@ -12,15 +14,31 @@ describe('Module 4 Project Tests', () => {
     */
     test(`TEXT_HEADING_CREATE_ACCOUNT is visible`, () => {
       render(<App lang="en" />)
-      expect(screen.getByText("Create an Account")).toBeVisible()
+      expect(screen.getByText(txt.en.TEXT_HEADING_CREATE_ACCOUNT)).toBeVisible()
     })
+
+    test(`LABEL_USERNAME is visible`, () => {
+      render(<App lang="en" />)
+      expect(screen.getByLabelText(txt.en.LABEL_USERNAME)).toBeVisible()
+    })
+
+    test(`PLACEHOLDER_USERNAME is visible`, () => {
+      render(<App lang='en' />)
+      expect(screen.getByPlaceholderText(txt.en.PLACEHOLDER_USERNAME)).toBeVisible()
+    })
+
   })
   describe('Spanish Language', () => {
     /*
       👉 TASK 3
-
+      
       This is done after making the UI multilingual.
     */
+
+      test(`TEXT_HEADING_CREATE_ACCOUNT`, () => {
+        render(<App lang='esp' />)
+        // expect(screen.getByText(txt.esp.TEXT_HEADING_CREATE_ACCOUNT)).toBeVisible()
+      })
   })
   describe('getEntriesByKeyPrefix', () => {
     test('can extract the correct data', () => {
