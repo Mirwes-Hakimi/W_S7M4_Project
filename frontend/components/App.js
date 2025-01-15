@@ -69,7 +69,7 @@ export default function App({ lang = 'en' }) {
       <h2>
         {texts.TEXT_HEADING_CREATE_ACCOUNT}
         <span onClick={() => setLanguage(language === 'en' ? 'esp' : 'en')}>
-          {language === 'en' ? ' 🇺🇸' : ' 🇪🇸'}
+          {language === 'en' ? ' EN' : ' ESP'}
         </span>
       </h2>
       <form onSubmit={onSubmit}>
@@ -77,14 +77,14 @@ export default function App({ lang = 'en' }) {
         {failure && <h4 className="error">{failure}</h4>}
 
         <div className="inputGroup">
-          <label htmlFor="username">Username:</label>
-          <input id="username" name="username" onChange={onChange} value={values.username} type="text" placeholder="Type username" />
+          <label htmlFor="username">{texts.LABEL_USERNAME}</label>
+          <input id="username" name="username" onChange={onChange} value={values.username} type="text" placeholder={texts.PLACEHOLDER_USERNAME} />
           {errors.username && <div className="validation">{errors.username}</div>}
         </div>
 
         <div className="inputGroup">
           <fieldset>
-            <legend>Favorite language:</legend>
+            <legend>{texts.TEXT_FAV_LANG}</legend>
             <label>
               <input onChange={onChange} type="radio" name="favLanguage" value="javascript" checked={values.favLanguage == 'javascript'} />
               JavaScript
@@ -98,7 +98,7 @@ export default function App({ lang = 'en' }) {
         </div>
 
         <div className="inputGroup">
-          <label htmlFor="favFood">Favorite food:</label>
+          <label htmlFor="favFood">{texts.LABEL_FAV_FOOD}</label>
           <select id="favFood" name="favFood" value={values.favFood} onChange={onChange}>
             <option value="">-- Select favorite food --</option>
             <option value="pizza">Pizza</option>
@@ -111,7 +111,7 @@ export default function App({ lang = 'en' }) {
         <div className="inputGroup">
           <label>
             <input id="agreement" type="checkbox" name="agreement" checked={values.agreement} onChange={onChange} />
-            Agree to our terms
+            {texts.LABEL_ACCEPT_TERMS}
           </label>
           {errors.agreement && <div className="validation">{errors.agreement}</div>}
         </div>
